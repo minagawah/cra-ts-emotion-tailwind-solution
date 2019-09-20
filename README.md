@@ -71,8 +71,6 @@ ESLint has no idea what it means.
 - @typescript-eslint/parser
 - eslint-config-react
 
-#### # `./eslintrc.js`
-
 As for the workaround (for ESLint dosn't know `tw`),
 what you need is the "globals" attribute
 in your `.eslintrc.js` (or `.eslintrc`) file.
@@ -183,7 +181,7 @@ One way to have
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-working, is to use `babel` plugins.  
+working, is to use ***babel plugins.***  
 Here are the plugins:
 
 - babel-plugin-tailwind-components
@@ -228,7 +226,7 @@ Then, you are all set to go.
 <a id="what-postcss"></a>
 ### 2-3. Using `PostCSS`
 
-Another way is to use PostCSS presets.  
+Another way is to use ***PostCSS presets.***  
 This is much simpler approach,
 and you don't need to install any babel plugins.  
 Just, you need to rewrite `config-overrides.js`
