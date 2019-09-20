@@ -4,7 +4,7 @@ Solution for React + TypeScript + emotion + tailwindcss.
 
 [1. About](#about)  
 [2. What I Did](#what)  
-&nbsp; [2-1. Basic Setups](#what-basics)  
+&nbsp; [2-1. Common Setups](#what-common)  
 &nbsp; [2-2. Using `babel`](#what-babel)  
 &nbsp; [2-3. Using `PostCSS`](#what-postcss)  
 [3. LICENSE](#license)  
@@ -44,10 +44,16 @@ For both scenario, you need
 since I assume that you do not wish to eject your project,
 but rewire your CRA project.
 
-<a id="what-basics"></a>
-### 2-1. Basic Setups
+<a id="what-common"></a>
+### 2-1. Common Setups
 
-In any case, you first need to create a React app (with TypeScript support):
+Whether you are using
+[babel plugins](#what-babel)
+or
+[PostCSS presets](#what-postcss),
+there are certain things need to be done beforehand.
+
+In any case, you need to create your React app:
 
 ```shell
 cd cra-ts-emotion-tailwind-solution
