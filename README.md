@@ -64,7 +64,7 @@ And, you need regular `@types` for your app:
 When using `tw` which is a macro syntax for writing
 tailwind styles via emotion,
 ESLint has no idea what it means.  
-**I am installing ESLint related packages just to show you the workaround for this.**
+**I am installing ESLint related packages just to show you the workaround for this.**  
 (ESLint because TSLint will be soon deprecated)
 
 - @typescript-eslint/eslint-plugin
@@ -73,7 +73,7 @@ ESLint has no idea what it means.
 
 #### `./eslintrc.js`
 
-As for the workaround,
+As for the workaround (for ESLint dosn't know `tw`),
 what you need is the "globals" attribute
 in your `.eslintrc.js` (or `.eslintrc`) file.
 
@@ -171,7 +171,7 @@ yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-
 ```
 
 **Up to this point were the basic setups needed for both babel and PostCSS approaches.  
-Now, I will discuss for further implementations for both.**
+Now, I will discuss for further implementations.**
 
 
 <a id="what-babel"></a>
