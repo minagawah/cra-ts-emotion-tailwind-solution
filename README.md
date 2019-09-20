@@ -71,11 +71,13 @@ ESLint has no idea what it means.
 - @typescript-eslint/parser
 - eslint-config-react
 
-#### `./eslintrc.js`
+#### # `./eslintrc.js`
 
 As for the workaround (for ESLint dosn't know `tw`),
 what you need is the "globals" attribute
 in your `.eslintrc.js` (or `.eslintrc`) file.
+
+#### # `./eslintrc.js`
 
 ```js
 module.exports = {
@@ -110,7 +112,7 @@ Just like ESlint does not understand what `tw` means,
 so TypeScript does not understand `tailwind.macro` module.  
 So, we are defining it.
 
-#### `./src/types.d.ts`
+#### # `./src/types.d.ts`
 
 ```js
 declare module 'tailwind.macro' {
@@ -187,11 +189,11 @@ Here are the plugins:
 - babel-plugin-tailwind-components
 - babel-plugin-macros
 
-#### `./babel-plugin-macros.config.js`
-
 Once you install the plugins,
 you need to create `babel-plugin-macros.config.js`
 directly under the root directory
+
+#### # `./babel-plugin-macros.config.js`
 
 ```js
 module.exports = {
@@ -202,7 +204,7 @@ module.exports = {
 }
 ```
 
-#### `./config-overrides.js`
+#### # `./config-overrides.js`
 
 Then, in your `config-overrides.js`,
 you need to use **addBabelPlugin** for the `macros` you defined above.
@@ -232,7 +234,7 @@ and you don't need to install any babel plugins.
 Just, you need to rewrite `config-overrides.js`
 so that you are using PostCSS presets.
 
-#### `./config-overrides.js`
+#### # `./config-overrides.js`
 
 ```js
 const {
