@@ -236,12 +236,12 @@ so that you are using PostCSS presets.
 const {
   override,
   addBabelPreset,
-  addPostcssPlugin,
+  addPostcssPlugins,
 } = require('customize-cra');
 
 module.exports = override(
   addBabelPreset('@emotion/babel-preset-css-prop'),
-  addPostcssPlugin([
+  addPostcssPlugins([
     require('tailwindcss')('./src/tailwind.config.js')
   ])
 )
