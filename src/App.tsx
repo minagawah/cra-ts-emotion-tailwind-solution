@@ -1,6 +1,13 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import tw from 'tailwind.macro';
+
 import logo from './logo.svg';
 import './App.css';
+
+const Button = styled.button`
+  ${tw`mt-4 p-2 text-black bg-white`}
+`;
 
 const App: React.FC = () => {
   return (
@@ -18,6 +25,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <Button>Click</Button>
       </header>
     </div>
   );
