@@ -205,7 +205,7 @@ module.exports = {
 #### # `./config-overrides.js`
 
 Then, in your `config-overrides.js`,
-you need to use **addBabelPlugin** for the `macros` you defined above.
+you need "addBabelPlugin" for the `macros` you just defined above.
 
 ```js
 const {
@@ -230,7 +230,9 @@ Another way is to use ***PostCSS presets.***
 This is much simpler approach,
 and you don't need to install any babel plugins.  
 Just, you need to rewrite `config-overrides.js`
-so that you are using PostCSS presets.
+so that you are using PostCSS presets.  
+This time, we are using "addPostcssPlugins".  
+(specify your `tailwind.config.js` if you have your custom themes)
 
 #### # `./config-overrides.js`
 
