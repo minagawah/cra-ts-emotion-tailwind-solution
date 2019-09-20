@@ -171,6 +171,9 @@ NPM packages to be installed, as a whole, would look like this:
 yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-react customize-cra react-app-rewired emotion @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss tailwind.macro@next
 ```
 
+**Up to this point were the basic setups needed for both babel and PostCSS approaches.  
+Now, I will discuss for further implementations for both.**
+
 
 <a id="what-babel"></a>
 ### 2-2. Using `babel`
