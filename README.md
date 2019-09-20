@@ -64,9 +64,8 @@ And, you need regular `@types` for your app:
 When using `tw` which is a macro syntax for writing
 tailwind styles via emotion,
 ESLint has no idea what it means.  
-To show you the workaround for this,
-I am installing ESLint related packages:  
-(*ESLint* because *TSLint* will be soon deprecated)
+**I am installing ESLint related packages just to show you the workaround for this.**
+(ESLint because TSLint will be soon deprecated)
 
 - @typescript-eslint/eslint-plugin
 - @typescript-eslint/parser
