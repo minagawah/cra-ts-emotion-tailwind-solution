@@ -14,13 +14,13 @@ Solution for React + TypeScript + emotion + tailwindcss.
 ## 1. About
 
 There must be quite a number of people
-struggling to get
+who have CRA (with TypeScript) struggling for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work in CRA + TypeScript projects.  
-This is a sample project to illustrate
-my solution to the issue.
+to work. I did.
+This is a sample app which illustrate
+some of my solutions for the issue.
 
 <a id="what"></a>
 ## 2. What I Did
@@ -29,57 +29,65 @@ There are basically 2 ways for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work in your CRA project.
+to work:
 
 1. Using babel plugins
 2. Using PostCSS presets
 
-In terms of the project structures,
-they don't differ much,
-and I will explain them
-as I describe how I actually setup this project.
-
-For both scenario, you need
-[customize-cra](https://github.com/arackaf/customize-cra),
-since I assume that you do not wish to eject your project,
-but rewire your CRA project.
+They don't differ much,
+and I will explain how you setup for both.
+Assuming that you do not wish to eject your app, you need
+[customize-cra](https://github.com/arackaf/customize-cra)
+(which is the extension of
+[react-app-rewired](https://github.com/timarney/react-app-rewired))
+to rewire your configurations.
 
 <a id="what-common"></a>
 ### 2-1. Common Setups
 
-Whether you are using
-[babel plugins](#what-babel)
-or
-[PostCSS presets](#what-postcss),
-there are certain things need to be done beforehand.
-
-In any case, you need to create your React app:
+Whether you choose
+(1) [to use babel plugins](#what-babel),
+or (2)
+[to use PostCSS presets](#what-postcss),
+there are common setups required,
+and I will illustrate steps to prepare the common settings.  
+In any case, you definitely need to create your app first:
 
 ```shell
 cd cra-ts-emotion-tailwind-solution
 yarn create react-app . --typescript
 ```
 
-And, you need regular `@types` for your app:
+As we are using TypeScript, we need standard `@types`.  
+You are installing:
 
 - typescript
 - @types/node
 - @types/react
 - @types/react-dom
 
-When using `tw` which is a macro syntax for writing
-tailwind styles via emotion,
-ESLint has no idea what it means.  
-**I am installing ESLint related packages just to show you the workaround for this.**  
-(ESLint because TSLint will be soon deprecated)
+Next follows what you need for ESLint.
+I am installing them only because there is a part
+where you need to configure if you are using
+`tailwind.macro` in your app.
+More specifically, you need it when you were to use `tw`
+which is a macro syntax for applying
+[tailwind](https://tailwindcss.com/)
+styles within
+[emotion](https://emotion.sh/docs/introduction)
+notations.  
+By the way, ESLint, because TSLint will soon be deprecated.  
+Here are the ones to install:
 
 - @typescript-eslint/eslint-plugin
 - @typescript-eslint/parser
 - eslint-config-react
 
-As for the workaround (for ESLint dosn't know `tw`),
-what you need is the "globals" attribute
-in your `.eslintrc.js` (or `.eslintrc`) file.
+Like I said, it is just one part you need to configure,
+and you do that to `.eslintrc.js` (or `.eslintrc` for some of you).
+Basically, in order for ESLint to understand what `tw` means,
+you need to add "globals" attribute.  
+Here's how:
 
 #### # `./eslintrc.js`
 
@@ -91,10 +99,12 @@ module.exports = {
 }
 ```
 
-And, now, here are the packages for
+Now, the main dish.
+You need the followings in order for
 [emotion](https://emotion.sh/docs/introduction)
 and
-[tailwindcss](https://tailwindcss.com/):
+[tailwindcss](https://tailwindcss.com/)
+to work:
 
 - customize-cra
 - react-app-rewired
@@ -105,16 +115,17 @@ and
 - tailwindcss
 - tailwind.macro@next
 
-For `tailwind.macro`, we are installing `next`,
-otherwise you get a runtime error as you import:
+For `tailwind.macro`, we need to specifically
+install `tailwind.macro@next`, otherwise
+you will see the following runtime error:
 
 ```
 Uncaught TypeError: Cannot read property 'default' of undefined
 ```
 
 Just like ESlint does not understand what `tw` means,
-so TypeScript does not understand `tailwind.macro` module.  
-So, we are defining it.
+so TypeScript does not understand what `tailwind.macro` is.  
+So, we need to define it:
 
 #### # `./src/types.d.ts`
 
@@ -125,33 +136,35 @@ declare module 'tailwind.macro' {
 }
 ```
 
-
-If you want to customize your theme for
-[tailwindcss](https://tailwindcss.com/),
-you should create your config file within `src` directory.  
-Otherwise, CRA does not like any pre-bundle sources
-directly under the root directory, and warns you.
-
-```shell
-npx tailwind init ./src/tailwind.config.js
-```
-
-Also, since we are using
-[customize-cra](https://github.com/arackaf/customize-cra)
-(which depends on
-[react-app-rewired](https://github.com/timarney/react-app-rewired)),
-we need `config-overrides.js`:
+Also, `config-overrides.js` for we rewire the configurations.
 
 ```shell
 touch ./config-overrides.js
 ```
 
-Whether you're using `babel` or `PostCSS`,
-once you have right configurations,
-you can use write anything for
+Altough this is optional,
+but if you want to customize themes
+for your
+[tailwindcss](https://tailwindcss.com/),
+you need `tailwind.config.js`,
+but it has to be within `src` directory
+because CRA does not like pre-bundled resources
+to be placed directly under the root:
+
+```shell
+npx tailwind init ./src/tailwind.config.js
+```
+
+OK. That's it for the common settings.
+Whether you are
+[using babel plugins](#what-babel)
+or
+[using PostCSS presets](#what-postcss),
+now you can write
 [tailwindcss](https://tailwindcss.com/)
-via
-[emotion](https://emotion.sh/docs/introduction):
+styles in
+[emotion](https://emotion.sh/docs/introduction)
+notations:
 
 ```js
 import styled from '@emotion/styled';
@@ -170,14 +183,14 @@ export const App: React.FC = () => {
 }
 ```
 
-NPM packages to be installed, as a whole, would look like this:
+As a whole, your installations would look like this:
 
 ```shell
 yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-react customize-cra react-app-rewired emotion @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss tailwind.macro@next
 ```
 
-**Up to this point were the basic setups needed for both babel and PostCSS approaches.  
-Now, I will discuss for further implementations.**
+**Up to this point were the basic setups for both approaches.
+From now on, I will explain the steps for each.**
 
 
 <a id="what-babel"></a>
@@ -187,15 +200,14 @@ One way to have
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-working, is to use ***babel plugins.***  
-Here are the plugins:
+working, is to use `babel` plugins:
 
 - babel-plugin-tailwind-components
 - babel-plugin-macros
 
-Once you install the plugins,
-you need to create `babel-plugin-macros.config.js`
-directly under the root directory
+Once you install them,
+you create `babel-plugin-macros.config.js`
+directly under the root:
 
 #### # `./babel-plugin-macros.config.js`
 
@@ -208,10 +220,11 @@ module.exports = {
 }
 ```
 
-#### # `./config-overrides.js`
+Then, in `config-overrides.js`,
+you use "addBabelPlugin" for `babel` to lookup
+`babel-plugin-macros.config.js` you just made.
 
-Then, in your `config-overrides.js`,
-you need "addBabelPlugin" for the `macros` you just defined above.
+#### # `./config-overrides.js`
 
 ```js
 const {
@@ -226,19 +239,17 @@ module.exports = override(
 )
 ```
 
-Then, you are all set to go.
+Great. You are all set to go!
 
 
 <a id="what-postcss"></a>
 ### 2-3. Using `PostCSS`
 
-Another way is to use ***PostCSS presets.***  
-This is much simpler approach,
-and you don't need to install any babel plugins.  
-Just, you need to rewrite `config-overrides.js`
-so that you are using PostCSS presets.  
-This time, we are using "addPostcssPlugins".  
-(specify your `tailwind.config.js` if you have your custom themes)
+Another way, which is much simpler than the last one,
+is to use `PostCSS` presets.
+You don't need to install extra packages.
+Just, you need to configure `config-overrides.js`.  
+This time, you use "addPostcssPlugins":
 
 #### # `./config-overrides.js`
 
@@ -258,8 +269,8 @@ module.exports = override(
 ```
 
 That's it!  
-Much easier!  
-(that's why this sample project chooses this way)
+Way simpler than the last one!  
+That's why I choose this approach for this sample project.
 
 
 <a href="license"></a>
