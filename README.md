@@ -72,8 +72,8 @@ You are installing:
 Next follows what you need for ESLint.
 By the way, ESLint, because TSLint will soon be deprecated.
 I am installing them
-***only because there is a part you need to configure***
-if you use ESLint and intend to use `tailwind.macro`.
+***only because there is a part you need to configure if you use ESLint***,
+and intending to use `tailwind.macro` in your app.
 More specifically, you need it when you were to use `tw`,
 which is a macro syntax for applying
 [tailwind](https://tailwindcss.com/)
