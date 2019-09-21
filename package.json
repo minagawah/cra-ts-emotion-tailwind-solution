@@ -2,7 +2,7 @@
   "name": "cra-ts-emotion-tailwind-solution",
   "version": "0.2.0",
   "private": true,
-  "description": "Solution for React + TypeScript + emotion + tailwindcss.",
+  "description": "2 solution for React + TypeScript + emotion + tailwindcss.",
   "scripts": {
     "lint:fix": "eslint './src/**/*.{ts,tsx}'",
     "start": "BROWSER=none react-app-rewired start",
