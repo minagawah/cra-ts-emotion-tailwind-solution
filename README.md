@@ -192,7 +192,7 @@ As a whole, your installations would look like this:
 yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-react customize-cra react-app-rewired emotion @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss tailwind.macro@next
 ```
 
-**Up to this point were the common setups required for both approaches.**  
+***Up to this point were the common setups required for both approaches.***  
 From now on, I will explain steps for each.
 
 
@@ -203,7 +203,7 @@ One way to have
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-working, is to use `babel` plugins:
+working, is to use `babel plugins`:
 
 - babel-plugin-tailwind-components
 - babel-plugin-macros
@@ -223,9 +223,9 @@ module.exports = {
 }
 ```
 
-Then, in `config-overrides.js`,
-you use "addBabelPlugin" for `babel` to lookup
-`babel-plugin-macros.config.js` you just made.
+Then, needs some work in your `config-overrides.js`.  
+For `babel` to lookup `babel-plugin-macros.config.js` you created,
+you use *addBabelPlugin*:
 
 #### # `./config-overrides.js`
 
@@ -249,10 +249,10 @@ Great. You are all set to go!
 ### 2-3. Using `PostCSS`
 
 Another way, which is much simpler than the last one,
-is to use `PostCSS` presets.
+is to use `PostCSS presets`.
 You don't need to install extra packages.
 Just, you need to configure `config-overrides.js`.  
-This time, you use "addPostcssPlugins":
+This time, you use *addPostcssPlugins*:
 
 #### # `./config-overrides.js`
 
