@@ -22,7 +22,7 @@ and
 to work in their apps.  
 I did.  
 And, I don't want others to suffer as I did.  
-This is a sample app which illustrate
+This is a sample app to provide
 some of my solutions for the issue.
 
 <a id="what"></a>
