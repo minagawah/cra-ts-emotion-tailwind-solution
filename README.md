@@ -74,7 +74,7 @@ By the way, ESLint, because TSLint will soon be deprecated.
 I am installing them only because there is a part
 where you need to configure if you are using
 `tailwind.macro` in your app.
-More specifically, you need it when you were to use `tw`
+More specifically, you need it when you were to use `tw`,
 which is a macro syntax for applying
 [tailwind](https://tailwindcss.com/)
 styles within
@@ -86,7 +86,7 @@ Here are the ones to install:
 - @typescript-eslint/parser
 - eslint-config-react
 
-Like I said, it is just one part you need to configure,
+Like I said, there's this one part you need to configure,
 and you do that to `.eslintrc.js` (or `.eslintrc` for some of you).
 Basically, in order for ESLint to understand what `tw` means,
 you need to add "globals" attribute.  
