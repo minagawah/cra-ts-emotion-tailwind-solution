@@ -140,7 +140,8 @@ declare module 'tailwind.macro' {
 }
 ```
 
-Also, needs `config-overrides.js` for we are to rewire the configurations.
+Also, needs `config-overrides.js` for we are to rewire the configurations:  
+(I will explain of the contents later because it differs for each approach)
 
 ```shell
 touch ./config-overrides.js
