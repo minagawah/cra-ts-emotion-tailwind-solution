@@ -215,7 +215,7 @@ so that you can use them:
 
 ```diff
 diff --git a/src/App.css b/src/App.css
-index afc3885..fc6b4b8 100644
+index afc3885..36277ba 100644
 --- a/src/App.css
 +++ b/src/App.css
 @@ -1,3 +1,7 @@
@@ -226,16 +226,14 @@ index afc3885..fc6b4b8 100644
  .App {
    text-align: center;
  }
-@@ -6,15 +10,18 @@
-   height: 40vmin;
- }
- 
--.App-header {
--  background-color: #282c34;
--  min-height: 100vh;
-+.App-header {
-+  background-color: #282c34;
-+  min-height: 100vh;
+@@ -9,12 +13,9 @@
+ .App-header {
+   background-color: #282c34;
+   min-height: 100vh;
+-  display: flex;
+-  flex-direction: column;
+-  align-items: center;
+-  justify-content: center;
    font-size: calc(10px + 2vmin);
    color: white;
 +  @apply flex flex-col flex-no-wrap justify-center content-center items-center;
