@@ -148,6 +148,8 @@ touch ./config-overrides.js
 
 Of course, you need to modify "scripts" in your `package.json`:
 
+#### # `./package.json`
+
 ```diff
 diff --git a/package.json b/package.json
 index c926937..b7a0de3 100644
