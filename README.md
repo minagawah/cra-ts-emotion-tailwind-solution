@@ -18,7 +18,9 @@ who have CRA (with TypeScript) struggling for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work. I did.
+to work.  
+I did.  
+And, I don't want others to suffer as I did.  
 This is a sample app which illustrate
 some of my solutions for the issue.
 
