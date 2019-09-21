@@ -70,6 +70,7 @@ You are installing:
 - @types/react-dom
 
 Next follows what you need for ESLint.
+By the way, ESLint, because TSLint will soon be deprecated.
 I am installing them only because there is a part
 where you need to configure if you are using
 `tailwind.macro` in your app.
@@ -79,7 +80,6 @@ which is a macro syntax for applying
 styles within
 [emotion](https://emotion.sh/docs/introduction)
 notations.  
-By the way, ESLint, because TSLint will soon be deprecated.  
 Here are the ones to install:
 
 - @typescript-eslint/eslint-plugin
