@@ -196,7 +196,9 @@ now you should be able to write
 [tailwindcss](https://tailwindcss.com/)
 styles in
 [emotion](https://emotion.sh/docs/introduction)
-notations:
+notations.  
+For the demonstration purpose,
+I moved all the styles from `src/App.css` to `src/App.tsx`:
 
 ```js
 import styled from '@emotion/styled';
@@ -215,37 +217,15 @@ export const App: React.FC = () => {
 }
 ```
 
-
 Also, make sure to import `tailwind` modules in your CSS file
 so that you can use them:
 
 #### # `./src/App.css`
 
 ```diff
-diff --git a/src/App.css b/src/App.css
-index afc3885..36277ba 100644
---- a/src/App.css
-+++ b/src/App.css
-@@ -1,3 +1,7 @@
 +@tailwind base;
 +@tailwind components;
 +@tailwind utilities;
-+
- .App {
-   text-align: center;
- }
-@@ -9,12 +13,9 @@
- .App-header {
-   background-color: #282c34;
-   min-height: 100vh;
--  display: flex;
--  flex-direction: column;
--  align-items: center;
--  justify-content: center;
-   font-size: calc(10px + 2vmin);
-   color: white;
-+  @apply flex flex-col flex-no-wrap justify-center content-center items-center;
- }
 ```
 
 As a whole, your installations would look like this:
