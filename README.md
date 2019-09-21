@@ -248,8 +248,8 @@ Great. You are all set to go!
 <a id="what-postcss"></a>
 ### 2-3. Using `PostCSS`
 
-Another way, which is much simpler than the last one,
-is to use `PostCSS presets`.
+Another way (which is much simpler than the last)
+is to use `PostCSS presets`.  
 You don't need to install extra packages.
 Just, you need to configure `config-overrides.js`.  
 This time, you use *addPostcssPlugins*:
