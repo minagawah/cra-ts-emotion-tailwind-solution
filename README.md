@@ -146,6 +146,27 @@ Also, needs `config-overrides.js` for we are to rewire the configurations.
 touch ./config-overrides.js
 ```
 
+Of course, you need to modify "scripts" in your `package.json`:
+
+```diff
+diff --git a/package.json b/package.json
+index c926937..b7a0de3 100644
+--- a/package.json
++++ b/package.json
+@@ -1,13 +1,14 @@
+   "scripts": {
+-    "start": "react-scripts start",
+-    "build": "react-scripts build",
+-    "test": "react-scripts test",
+-    "eject": "react-scripts eject"
++    "lint:fix": "eslint './src/**/*.{ts,tsx}'",
++    "start": "BROWSER=none react-app-rewired start",
++    "build": "react-app-rewired build",
++    "test": "react-app-rewired test",
++    "eject": "react-app-rewired eject"
+   },
+```
+
 Altough this is optional,
 but if you want customizations on your themes for
 [tailwindcss](https://tailwindcss.com/),
@@ -184,6 +205,41 @@ export const App: React.FC = () => {
     </div>
   );
 }
+```
+
+
+Also, make sure to import `tailwind` modules in your CSS file
+so that you can use them:
+
+#### # `./src/App.css`
+
+```diff
+diff --git a/src/App.css b/src/App.css
+index afc3885..fc6b4b8 100644
+--- a/src/App.css
++++ b/src/App.css
+@@ -1,3 +1,7 @@
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
++
+ .App {
+   text-align: center;
+ }
+@@ -6,15 +10,18 @@
+   height: 40vmin;
+ }
+ 
+-.App-header {
+-  background-color: #282c34;
+-  min-height: 100vh;
++.App-header {
++  background-color: #282c34;
++  min-height: 100vh;
+   font-size: calc(10px + 2vmin);
+   color: white;
++  @apply flex flex-col flex-no-wrap justify-center content-center items-center;
+ }
 ```
 
 As a whole, your installations would look like this:
