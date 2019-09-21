@@ -14,11 +14,12 @@ Solution for React + TypeScript + emotion + tailwindcss.
 ## 1. About
 
 There must be quite a number of people
-who have CRA (with TypeScript) struggling for
+who have CRA (with TypeScript support)  
+struggling for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work.  
+to work in their apps.  
 I did.  
 And, I don't want others to suffer as I did.  
 This is a sample app which illustrate
