@@ -80,7 +80,7 @@ which is a macro syntax for applying
 styles within
 [emotion](https://emotion.sh/docs/introduction)
 notations.  
-Here are the ones to install:
+Here are the ones to install (not required, just for the workaround on ESLint):
 
 - @typescript-eslint/eslint-plugin
 - @typescript-eslint/parser
