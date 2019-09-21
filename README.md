@@ -102,7 +102,7 @@ module.exports = {
 }
 ```
 
-Now, the main dish.
+Now, here's the main dish!  
 You need the followings in order for
 [emotion](https://emotion.sh/docs/introduction)
 and
@@ -119,7 +119,7 @@ to work:
 - tailwind.macro@next
 
 For `tailwind.macro`, we need to specifically
-install `tailwind.macro@next`, otherwise
+install `tailwind.macro@next` otherwise
 you will see the following runtime error:
 
 ```
@@ -139,18 +139,17 @@ declare module 'tailwind.macro' {
 }
 ```
 
-Also, `config-overrides.js` for we rewire the configurations.
+Also, needs `config-overrides.js` for we are to rewire the configurations.
 
 ```shell
 touch ./config-overrides.js
 ```
 
 Altough this is optional,
-but if you want to customize themes
-for your
+but if you want customizations on your themes for
 [tailwindcss](https://tailwindcss.com/),
 you need `tailwind.config.js`,
-but it has to be within `src` directory
+but it has to be placed within `src` directory
 because CRA does not like pre-bundled resources
 to be placed directly under the root:
 
@@ -158,7 +157,7 @@ to be placed directly under the root:
 npx tailwind init ./src/tailwind.config.js
 ```
 
-OK. That's it for the common settings.
+OK. That's it for the common settings!
 Whether you are
 [using babel plugins](#what-babel)
 or
@@ -192,8 +191,8 @@ As a whole, your installations would look like this:
 yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-react customize-cra react-app-rewired emotion @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss tailwind.macro@next
 ```
 
-**Up to this point were the basic setups for both approaches.
-From now on, I will explain the steps for each.**
+**Up to this point were the common setups required for both approaches.**  
+From now on, I will explain steps for each.
 
 
 <a id="what-babel"></a>
