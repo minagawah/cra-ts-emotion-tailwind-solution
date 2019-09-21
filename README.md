@@ -127,6 +127,12 @@ you will see the following runtime error:
 Uncaught TypeError: Cannot read property 'default' of undefined
 ```
 
+In case you're wondering,
+you don't need `autoprefixer`, nor `normalized.css`,
+for [the former is included in CRA](https://create-react-app.dev/docs/post-processing-css),
+and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app).
+
+
 Just like ESlint does not understand what `tw` means,
 so TypeScript does not understand what `tailwind.macro` is.  
 So, we need to define it:
