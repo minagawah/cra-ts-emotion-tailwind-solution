@@ -20,7 +20,7 @@ struggling for
 and
 [tailwindcss](https://tailwindcss.com/)
 to work in their apps.  
-I did.  
+I did (for several freaking days).  
 And, I don't want others to suffer as I did.  
 This is a sample app to provide
 some of my solutions for the issue.
