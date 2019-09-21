@@ -260,7 +260,8 @@ One way to have
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-working, is to use `babel plugins`:
+working, is to use `babel plugins`:  
+(although it is much easier with [2-3 Using PostCSS](#what-postcss))
 
 - babel-plugin-tailwind-components
 - babel-plugin-macros
