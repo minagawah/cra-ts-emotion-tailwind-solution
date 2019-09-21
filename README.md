@@ -102,12 +102,13 @@ module.exports = {
 }
 ```
 
-Now, here's the main dish!  
-You need the followings in order for
+Now, here's our main dish!  
+In order for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work:
+to work,
+you need the followings:
 
 - customize-cra
 - react-app-rewired
@@ -157,7 +158,7 @@ to be placed directly under the root:
 npx tailwind init ./src/tailwind.config.js
 ```
 
-OK. That's it for the common settings!
+OK. That's all for the common settings!
 Whether you are
 [using babel plugins](#what-babel)
 or
