@@ -187,7 +187,7 @@ Whether you are
 [using babel plugins](#what-babel)
 or
 [using PostCSS presets](#what-postcss),
-now you can write
+now you should be able to write
 [tailwindcss](https://tailwindcss.com/)
 styles in
 [emotion](https://emotion.sh/docs/introduction)
