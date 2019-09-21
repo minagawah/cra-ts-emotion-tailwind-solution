@@ -1,6 +1,6 @@
 # cra-ts-emotion-tailwind-solution
 
-Solution for React + TypeScript + emotion + tailwindcss.
+Solutions for React + TypeScript + emotion + tailwindcss.
 
 [1. About](#about)  
 [2. What I Did](#what)  
