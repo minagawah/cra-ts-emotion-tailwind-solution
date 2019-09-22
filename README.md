@@ -34,8 +34,8 @@ and
 [tailwindcss](https://tailwindcss.com/)
 to work:
 
-1. Using babel plugins
-2. Using PostCSS presets
+1. Using babel macro
+2. Using PostCSS plugin
 
 They don't differ much,
 and I will explain how you setup for both.
@@ -49,9 +49,9 @@ to rewire your configurations.
 ### 2-1. Common Setups
 
 Whether you choose
-(1) [to use babel plugins](#what-babel),
+(1) [to use babel macro](#what-babel),
 or (2)
-[to use PostCSS presets](#what-postcss),
+[to use PostCSS plugin](#what-postcss),
 there are common setups required,
 and I will illustrate steps to prepare the common settings.  
 In any case, you definitely need to create your app first:
@@ -189,9 +189,9 @@ npx tailwind init ./src/tailwind.config.js
 
 OK. That's all for the common settings!
 Whether you are
-[using babel plugins](#what-babel)
+[using babel macro](#what-babel)
 or
-[using PostCSS presets](#what-postcss),
+[using PostCSS plugin](#what-postcss),
 now you should be able to write
 [tailwindcss](https://tailwindcss.com/)
 styles in
@@ -297,8 +297,9 @@ One way to have
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-working, is to use `babel plugins`:  
-(although, it is much easier with *["2-3 Using PostCSS"](#what-postcss)* approach)
+working, is to use
+[babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros).  
+(although, I recommend using *["2-3 Using PostCSS"](#what-postcss)* for it is much easier)
 
 - babel-plugin-tailwind-components
 - babel-plugin-macros
@@ -344,7 +345,7 @@ Great. You are all set to go!
 ### 2-3. Using `PostCSS`
 
 Another way (which is much simpler than the last)
-is to use `PostCSS presets`.  
+is to use `PostCSS plugin`.  
 You don't need to install extra packages.
 Just, you need to configure `config-overrides.js`.  
 This time, you use *addPostcssPlugins*:
