@@ -7,7 +7,7 @@ import logo from './logo.svg';
 import './App.css';
 
 const Button = styled.button`
-  ${tw`mt-4 p-2 text-white bg-red`}
+  ${tw`mt-4 p-2 text-white bg-red-600`}
 `;
 
 const spin = keyframes`

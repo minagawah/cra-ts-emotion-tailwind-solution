@@ -1,6 +1,6 @@
 {
   "name": "cra-ts-emotion-tailwind-solution",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "description": "Solutions for React + TypeScript + emotion + tailwindcss.",
   "scripts": {
