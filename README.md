@@ -319,6 +319,11 @@ module.exports = {
 }
 ```
 
+*Note: If you are using only `tailwind.macro` (which is `tw`)
+and not using `emotion`, you could instead write:
+`styled: '@emotion/styled'` for the above.*
+
+
 Then, needs some work in your `config-overrides.js`.  
 For `babel` to lookup `babel-plugin-macros.config.js` you created,
 you use *addBabelPlugin*:
