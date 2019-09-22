@@ -125,8 +125,9 @@ for [the former is included in CRA](https://create-react-app.dev/docs/post-proce
 and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app).*
 
 For `tailwind.macro`, we need to specifically
-install `tailwind.macro@next` otherwise
-you will see the following runtime error:
+install
+[tailwind.macro@next](https://github.com/bradlc/babel-plugin-tailwind-components/releases/tag/v1.0.0-alpha.2)
+otherwise you encounter the following runtime error:
 
 ```
 Uncaught TypeError: Cannot read property 'default' of undefined
