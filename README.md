@@ -71,7 +71,8 @@ You are installing:
 - @types/react-dom
 
 Next follows what you need for ESLint.
-By the way, ESLint, because TSLint will soon be deprecated.
+By the way, we're using ESLint because
+[TSLint will soon be deprecated](https://medium.com/palantir/tslint-in-2019-1a144c2317a9).
 I am installing them
 ***only because there is a part you need to configure if you use ESLint***,
 and intending to use `tailwind.macro` in your app.
