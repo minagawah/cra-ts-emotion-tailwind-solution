@@ -315,14 +315,17 @@ directly under the root:
 module.exports = {
   tailwind: {
     config: './src/tailwind.config.js',
-    styled: 'styled-components/macro',
+    styled: '@emotion/styled',
   },
 }
 ```
 
-*Note: If you are using only `tailwind.macro` (which is `tw`)
-and not using `emotion`, you could instead write:
-`styled: '@emotion/styled'` for the above.*
+*Note: If you are NOT using
+[emotion](https://emotion.sh/docs/introduction)
+and instead using
+[styled-components](https://github.com/styled-components/styled-components),
+then write
+`styled: 'styled-components/macro'` for the above.*
 
 
 Then, needs some work in your `config-overrides.js`.  
