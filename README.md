@@ -25,6 +25,11 @@ And, I don't want others to suffer as I did.
 This is a sample app to provide
 some of my solutions for the issue.
 
+***Currently,
+[there is an issue with specifying colors](#color-issue).  
+I desperately want someone figuring out the solution...***
+
+
 <a id="what"></a>
 ## 2. What I Did
 
@@ -216,7 +221,7 @@ index 226ee63..a322dbd 100644
  import './App.css';
  
 +const Button = styled.button`
-+  ${tw`mt-4 p-2 text-black bg-white`}
++  ${tw`mt-4 p-2 text-white bg-red-600`}
 +`;
 +
 +const spin = keyframes`
@@ -269,6 +274,14 @@ index 226ee63..a322dbd 100644
      </div>
    );
 ```
+
+<a id="color-issue"></a>
+***@todo  
+Currently, I cannot make `bg` class to work under `tailwind.macro`.  
+So, I extended colors in
+[src/tailwind.config.js](./src/tailwind.config.js)
+in order for colors to work.  
+I desperately need someone to figure out the solution for this...***
 
 Also, make sure to import `tailwind` modules in your CSS file
 so that you can use them:
