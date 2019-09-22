@@ -281,7 +281,8 @@ Currently, I cannot make `bg` class to work under `tailwind.macro`.
 So, I extended colors in
 [src/tailwind.config.js](./src/tailwind.config.js)
 in order for colors to work.  
-I desperately need someone to figure out the solution for this...***
+I desperately need someone to figure out the solution for this...***  
+https://github.com/minagawah/cra-ts-emotion-tailwind-solution/issues/1
 
 Also, make sure to import `tailwind` modules in your CSS file
 so that you can use them:
