@@ -351,14 +351,16 @@ If you are using Jest (+ enzyme), then install:
 - @babel/preset-env
 - babel-plugin-transform-export-extensions
 - jest-emotion
+- @types/enzyme
 - enzyme
 - enzyme-adapter-react-16
 - react-test-renderer
 - enzyme-to-json
 
+yarn add --dev @types/enzyme
 
 ```shell
-yarn add --dev ts-jest babel-plugin-macros babel-plugin-tailwind-components @babel/preset-env babel-plugin-transform-export-extensions jest-emotion enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json
+yarn add --dev ts-jest babel-plugin-macros babel-plugin-tailwind-components @babel/preset-env babel-plugin-transform-export-extensions jest-emotion @types/enzyme enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json
 ```
 
 

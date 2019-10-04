@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es6", /* ECMAScript target version (default: es3) */
+    "module": "esnext", /* Module code generation */
+    "jsx": "react", /* JSX code generation */
     "lib": [
       "dom",
       "dom.iterable",
@@ -8,16 +10,15 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true, /* Interop between commonjs and esm (implies "allowSyntheticDefaultImports') */
+    "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export */
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node", /* Module resolution strategy (node or classic) */
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
+    "noEmit": true
+    /* "noImplicitAny" (Errors when implying "any") */
   },
   "include": [
     "src"

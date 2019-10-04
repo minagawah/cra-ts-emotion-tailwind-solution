@@ -19,7 +19,7 @@ const spin = keyframes`
   }
 `;
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <div css={css`text-align: center;`}>
       <header css={css`
@@ -56,5 +56,3 @@ pointer-events: none;
     </div>
   );
 }
-
-export default App;

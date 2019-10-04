@@ -1,13 +1,13 @@
 {
   "name": "cra-ts-emotion-tailwind-solution",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Solutions for React + TypeScript + emotion + tailwindcss.",
   "scripts": {
     "lint:fix": "eslint './src/**/*.{ts,tsx}'",
     "start": "BROWSER=none react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "test": "NODE_ENV=test react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
@@ -50,6 +50,7 @@
     "@emotion/babel-preset-css-prop": "^10.0.17",
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
+    "@types/enzyme": "^3.10.3",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
     "babel-plugin-macros": "^2.6.1",
