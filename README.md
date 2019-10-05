@@ -9,9 +9,10 @@ Solutions for React + TypeScript + emotion + tailwindcss.
 &nbsp; [2-3. Using `babel-plugin-macros`](#what-macro)  
 [3. LICENSE](#license)  
 
-**Update (10/4/2019):  
-Previously, wasn't able to run tests.  
-Now it's fixed.**
+***Update (10/5/2019):  
+Found out the current settings does not allow Jest tests
+if components include "emotion" syntax.
+Will figure out for solutions soon.***
 
 
 <a id="about"></a>
@@ -25,10 +26,8 @@ and
 [tailwindcss](https://tailwindcss.com/)
 to work in their apps.  
 I did.  
-For several days.  
-And I didn't want others to suffer as I did.  
-This is a sample app to provide
-some of my solutions for the issue.
+I didn't want others to suffer as I did,  
+so here is a sample app to provide some of my solutions.
 
 
 <a id="what"></a>
@@ -43,8 +42,8 @@ to work:
 1. Using PostCSS plugin
 2. Using babel-plugin-macros
 
-They don't differ much,
-and I will explain how you setup for both.
+They don't differ much
+and I will explain how you setup for both.  
 Assuming that you do not wish to eject your app, you need
 [customize-cra](https://github.com/arackaf/customize-cra)
 (which is the extension of
@@ -54,11 +53,11 @@ to rewire your configurations.
 <a id="what-common"></a>
 ### 2-1. Common Setups
 
-Whether you choose
-(1) [to use PostCSS plugin](#what-postcss),
-or (2) [to use babel macro](#what-macro),
+Whether you are
+(1) [using PostCSS plugin](#what-postcss),
+or (2) [using babel-plugin-macros](#what-macro),
 there are common setups required,
-and I will illustrate steps to prepare the common settings.  
+and I will illustrate steps to prepare the common settings.
 In any case, you definitely need to create your app first:
 
 ```shell
@@ -73,6 +72,9 @@ You are installing:
 - @types/node
 - @types/react
 - @types/react-dom
+
+***For all the NPM packages listed
+I will later list up everything, so no worries.***
 
 Next follows what you need for ESLint.
 By the way, we're using ESLint because
@@ -125,10 +127,10 @@ you need the followings:
 - tailwindcss
 - tailwind.macro@next
 
-*In case you're wondering,
+(In case you're wondering,
 you don't need `autoprefixer`, nor `normalized.css`,
 for [the former is included in CRA](https://create-react-app.dev/docs/post-processing-css),
-and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app).*
+and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app))
 
 For `tailwind.macro`, we need to specifically install
 [tailwind.macro@next](https://github.com/bradlc/babel-plugin-tailwind-components/releases/tag/v1.0.0-alpha.2)
@@ -286,14 +288,15 @@ so that you can use them:
 +@tailwind utilities;
 ```
 
-As a whole, your installations would look like this:
+So far, here are the NPM packages
+that you need to install:
 
 ```shell
 yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-react customize-cra react-app-rewired emotion @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss tailwind.macro@next
 ```
 
-***Up to this point were the common setups required for both approaches.***  
-From now on, I will explain steps for each.
+**UP TO THIS POINT ARE THE COMMON SETUPS FOR BOTH APPROACHES.
+FROM NOW ON, I WILL EXPLAIN EACH APPROACH.**
 
 
 <a id="what-postcss"></a>
@@ -304,15 +307,15 @@ One way to have
 and
 [tailwindcss](https://tailwindcss.com/)
 working, is to use `PostCSS plugin`.  
-This is much easier.  
-You don't need to install extra packages.  
-Although, there's a downside to this:
-***that you may NOT perform Jest (+ Enzyme) testing.***  
-If you are planning to use Jest (+ Enzyme), then you must choose
+**Although this is much easier approach,
+if you are planning to perform Jest tests,
+then it won't allow you.**  
+If such the case, you need
 [2-3 Using 'babel-plugin-macros'](#what-macro).
 
-All you need is to configure `config-overrides.js`.  
-You are using *addPostcssPlugins*:
+OK. Here's the PostCSS plugin approach.
+All you need is to configure `config-overrides.js`,
+and you are using *addPostcssPlugins*:
 
 #### # `./config-overrides.js`
 
@@ -332,6 +335,13 @@ module.exports = override(
 ```
 
 That's it!  
+You may now use
+[emotion](https://emotion.sh/docs/introduction)
+and
+[tailwindcss](https://tailwindcss.com/)!  
+(however, if you plan to have Jest tests,
+you need another approach like I discussed above)
+
 
 
 <a id="what-macro"></a>
@@ -339,33 +349,38 @@ That's it!
 
 Another ways is to use
 [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros).  
-All you need are the followings:
+All you need to install are the followings:
 
 - babel-plugin-macros
 - babel-plugin-tailwind-components
 
-Basically, the above two are sufficient if you are not Jest testing.  
-If you are using Jest (+ enzyme), then install:
+```shell
+yarn add --dev babel-plugin-macros babel-plugin-tailwind-components
+```
+
+The above 2 packages are sufficient for
+[emotion](https://emotion.sh/docs/introduction)
+and
+[tailwindcss](https://tailwindcss.com/)
+to work,
+however, if you plan to run Jest tests (with Enzyme),
+then you need to install the followings:
 
 - ts-jest
-- @babel/preset-env
-- babel-plugin-transform-export-extensions
-- jest-emotion
-- @types/enzyme
 - enzyme
 - enzyme-adapter-react-16
 - react-test-renderer
 - enzyme-to-json
-
-yarn add --dev @types/enzyme
+- jest-emotion
+- @types/enzyme
+- @types/enzyme-adapter-react-16
 
 ```shell
-yarn add --dev ts-jest babel-plugin-macros babel-plugin-tailwind-components @babel/preset-env babel-plugin-transform-export-extensions jest-emotion @types/enzyme enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json
+yarn add --dev ts-jest enzyme enzyme-adapter-react-16 react-test-renderer enzyme-to-json jest-emotion @types/enzyme @types/enzyme-adapter-react-16
 ```
 
-
-Then, you create `babel-plugin-macros.config.js`
-directly under the root:
+Whether you need Jest or not, you need to create
+`babel-plugin-macros.config.js` directly under the root:
 
 #### # `./babel-plugin-macros.config.js`
 
@@ -378,16 +393,15 @@ module.exports = {
 }
 ```
 
-*Note: If you are NOT using
-[emotion](https://emotion.sh/docs/introduction)
-and instead using
-[styled-components](https://github.com/styled-components/styled-components),
-then write
-`styled: 'styled-components/macro'` for the above.*
+(If you are using
+[styled-components](https://github.com/styled-components/styled-components)
+instead of
+[emotion](https://emotion.sh/docs/introduction),
+then write: `styled: 'styled-components/macro'`)
 
-Secondly, you need some work in your `config-overrides.js`.  
-For `babel` to lookup `babel-plugin-macros.config.js` you created,
-you need *addBabelPlugin*:
+Secondly, you need the following `config-overrides.js`
+(whether you are Jest testing or not).  
+Notice, "macro" bellow infers `babel-plugin-macros.config.js` you created earlier.
 
 #### # `./config-overrides.js`
 
@@ -404,92 +418,83 @@ module.exports = override(
 )
 ```
 
-Although this is good enough for 
+Alright. So far, this is good enough for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work in the app,
-it is not enough for Jest (+ enzyme) to run:
-*you need Jest configurations as well.*
+to work.  
+For those who wants Jest testing (with Enzyme),
+you need a bit more.
 
-```js
-const {
-  override,
-  addBabelPreset,
-  addBabelPlugin,
-} = require('customize-cra');
+At first, you need to create `jest.config.js`:  
+(no need to override in your `config-overrides.js`,
+but CRA will automatically look up the file).
 
-module.exports = {
-  jest: override((config) => ({
-    transform: {
-      "^.+\\.(js|ts)": "<rootDir>/node_modules/babel-jest"
-    },
-    transformIgnorePatterns: [
-      "<rootDir>/node_modules/(?!anime)"
-    ],
-    moduleNameMapper: {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.ts",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.ts"
-    },
-    snapshotSerializers: [
-      "enzyme-to-json/serializer",
-      "jest-emotion"
-    ],
-    setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
-    collectCoverageFrom: [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/index.tsx",
-      "!src/setupTests.ts",
-      "!src/components/**/index.{js,jsx,ts,tsx}",
-      "!src/containers/**/index.{js,jsx,ts,tsx}"
-    ],
-    coverageThreshold: {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-  })),
-  webpack: override(
-    addBabelPreset('@emotion/babel-preset-css-prop'),
-    addBabelPlugin('macros')
-  ),
-};
-```
-
-Moreover, for the part where you configured
-to use `babel-plugin-macros` above,
-you need the same thing for `babel.config.js`.  
-So, create `babel.config.js`, and configure:
-
-#### # `./babel.config.js`
+#### # `./jest.config.js`
 
 ```js
 module.exports = {
-  presets: [
-    [
-      '@babel/preset-env',
-      { modules: 'commonjs' }
-    ],
-    '@babel/preset-react',
-    '@emotion/babel-preset-css-prop'
+  "roots": [
+    "<rootDir>/src"
   ],
-  plugins: [
-    'macros',
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  "transformIgnorePatterns": [
+    "<rootDir>/node_modules/(?!anime)"
   ],
-};
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer",
+    "jest-emotion"
+  ],
+  "moduleNameMapper": {
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.ts",
+    "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.ts"
+  },
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!src/index.tsx",
+    "!src/setupTests.ts",
+    "!src/components/**/index.{js,jsx,ts,tsx}",
+    "!src/containers/**/index.{js,jsx,ts,tsx}"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "statements": 80
+    }
+  },
+}
 ```
 
-Alghouth this seems redundant, however,
-unless you set the configurations precisely to `babel.config.js` (no `.babelrc`),
-`jest-emotion` currently
-***does NOT allow you to have [emotion](https://emotion.sh/docs/introduction) macros in your codes.***
+In the above, "transformIgnorePatterns" and "moduleNameMapper"
+are optional, and you don't really need them.  
+For "transformIgnorePatterns", I specified `anime.js`
+because TypeScript could not find
+default export from `anime.js`, so I ignored.  
+For "moduleNameMapper" are just tricks
+to replace actual CSS and other assets with mocks during the tests.  
+For "collectCoverageFrom" and "coverageThreshold" are needed
+when you attempt to perform the coverage tests.
 
-Also, create `src/setupTests.ts`:
+Secondly, you need `src/setupTests.ts`.  
+For non-CRA, you need in your `jest.config.js`
+to specify `"setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"]`,
+but since this project was created with CRA,
+it will automatically lookup `src/setupTests.ts` for you.
 
-#### # `./src/setupTests.ts`
+#### # `./src/setupTests.js`
 
 ```js
 import { configure } from 'enzyme';
@@ -502,43 +507,8 @@ configure({ adapter: new Adapter() });
 expect.addSnapshotSerializer(createSerializer(emotion));
 ```
 
-And, if you are importing external SVG assets to your JSX/TSX,
-then you need to `__mocks__`:
-
-#### # `./__mocks__/fileMocks.ts`
-
-```js
-module.exports = 'test-file-stub';
-```
-
-#### # `./__mocks__/sytleMocks.ts`
-
-```js
-module.exports = {};
-```
-
 That's it!  
-Here's your test.  
-(notice it is using "shadow" from `enzyme`)
-
-
-#### # `./src/__tests__/App.ts`
-
-```js
-import React from 'react';
-import { shallow } from 'enzyme';
-import { App } from '../';
-
-beforeEach(() => {
-});
-
-afterEach(() => {
-});
-
-it('renders without crashing', () => {
-  shallow(<App />);
-});
-```
+Have fun with Jest + Enzyme!
 
 ```shell
 yarn test

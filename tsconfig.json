@@ -4,9 +4,9 @@
     "module": "esnext", /* Module code generation */
     "jsx": "react", /* JSX code generation */
     "lib": [
+      "esnext",
       "dom",
-      "dom.iterable",
-      "esnext"
+      "dom.iterable"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,8 +17,8 @@
     "moduleResolution": "node", /* Module resolution strategy (node or classic) */
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
-    /* "noImplicitAny" (Errors when implying "any") */
+    "noEmit": true,
+    "types": ["@emotion/core"]
   },
   "include": [
     "src"
