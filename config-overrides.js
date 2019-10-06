@@ -4,9 +4,7 @@ const {
   addBabelPlugin,
 } = require('customize-cra');
 
-module.exports = {
-  webpack: override(
-    addBabelPreset('@emotion/babel-preset-css-prop'),
-    addBabelPlugin('macros')
-  ),
-};
+module.exports = override(
+  addBabelPreset('@emotion/babel-preset-css-prop'),
+  addBabelPlugin('macros')
+)

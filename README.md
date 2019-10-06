@@ -124,7 +124,7 @@ you need the followings:
 - @emotion/core
 - @emotion/styled
 - @emotion/babel-preset-css-prop
-- tailwindcss
+- tailwindcss@next
 - tailwind.macro@next
 
 (In case you're wondering,
@@ -132,15 +132,13 @@ you don't need `autoprefixer`, nor `normalized.css`,
 for [the former is included in CRA](https://create-react-app.dev/docs/post-processing-css),
 and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app))
 
-For `tailwind.macro`, we need to specifically install
-[tailwind.macro@next](https://github.com/bradlc/babel-plugin-tailwind-components/releases/tag/v1.0.0-alpha.2)
-otherwise you encounter the following runtime error:
+For both `tailwindcss` and `tailwind.macro`,
+you should specifically install `next`.  
+(otherwise you will encounter an error for default import)
 
-```
-Uncaught TypeError: Cannot read property 'default' of undefined
-```
+Also, `tailwind.macro` is just an alias of `babel-plugin-tailwind-components`.
 
-Just like ESlint does not understand what `tw` means,
+OK. Just like ESlint does not understand what `tw` means,
 so TypeScript does not understand what `tailwind.macro` is.  
 So, we need to define it:
 
@@ -393,11 +391,12 @@ module.exports = {
 }
 ```
 
-(If you are using
+In case you are using
 [styled-components](https://github.com/styled-components/styled-components)
 instead of
 [emotion](https://emotion.sh/docs/introduction),
-then write: `styled: 'styled-components/macro'`)
+you should write: `styled: 'styled-components/macro'` for the above "styled".  
+Also, it should be `Button = styled('button')` instread of `Button = styled.button`.
 
 Secondly, you need the following `config-overrides.js`
 (whether you are Jest testing or not).  
