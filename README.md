@@ -5,8 +5,8 @@ Solutions for React + TypeScript + emotion + tailwindcss.
 [1. About](#about)  
 [2. What I Did](#what)  
 &nbsp; [2-1. Common Setups](#what-common)  
-&nbsp; [2-2. Using `PostCSS`](#what-postcss)  
-&nbsp; [2-3. Using `babel-plugin-macros`](#what-macro)  
+&nbsp; [2-2. Using PostCSS](#what-postcss)  
+&nbsp; [2-3. Using Babel Macros](#what-macro)  
 [3. LICENSE](#license)  
 
 
@@ -19,7 +19,7 @@ for
 and
 [tailwindcss](https://tailwindcss.com/)
 to work on my CRA app with TypeScript support,
-and I do not want others to suffer as I did.  
+and I do not want others to suffer as I did...
 This is a sample app to illustrate
 some of my solutions.
 
@@ -27,22 +27,22 @@ some of my solutions.
 <a id="what"></a>
 ## 2. What I Did
 
-There are basically 2 ways for
+There are basically two approaches for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
 to work:
 
 1. Using PostCSS plugin
-2. Using babel macros
+2. Using Babel Macros
 
-Both approaches work fine
-except if you are running Jest (with enzyme) tests,
-then you must choose the 2nd approach.
+Both work fine,
+except if you are running Jest (+ Enzyme) tests,
+then you need the latter.
 
 I am assuming the readers have a CRA app,
-and not wanting your app to eject the configurations.  
-So, you must be using
+and not wanting your app to eject the configurations,
+and you must be using
 [customize-cra](https://github.com/arackaf/customize-cra)
 (which is the extension of
 [react-app-rewired](https://github.com/timarney/react-app-rewired))
@@ -61,15 +61,15 @@ yarn create react-app . --typescript
 ```
 
 As we are using TypeScript, we need standard `@types`.  
-You are installing:
+Installations for standard types:
 
 - typescript
 - @types/node
 - @types/react
 - @types/react-dom
 
-***For all the NPM packages listed
-I will later list up everything, so no worries.***
+**(I will provide later the whole list of packages
+you are installing, so no worries for now)**
 
 Next, installations for ESLint.
 You don't need them if you are not linting,
@@ -92,7 +92,7 @@ Installations for ESLint:
 - eslint-config-react
 
 Once installed, you need ESLint
-to recognize `tw` as one of the globals
+to recognize `tw` as one of the globals,
 and you need to set it in your `.eslintrc.js`
 (or `.eslintrc` for some of you).
 
@@ -117,13 +117,13 @@ Install the followings:
 - @emotion/babel-preset-css-prop
 - tailwindcss@next
 
-In case you're wondering
+*(In case you're wondering
 why not installing `autoprefixer`, nor `normalized.css`,
 [the former is included in CRA](https://create-react-app.dev/docs/post-processing-css),
-and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app))
+and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app))*
 
 Now, TypeScript does not know what `tailwind.macro` means,
-and you need to define it:
+so you need to define it:
 
 #### # `./src/types.d.ts`
 
@@ -134,17 +134,18 @@ declare module 'tailwind.macro' {
 }
 ```
 
-Then, create `config-overrides.js`
-since your are using
+Since your are using
 [customize-cra](https://github.com/arackaf/customize-cra)
 (or
-[react-app-rewired](https://github.com/timarney/react-app-rewired)):
+[react-app-rewired](https://github.com/timarney/react-app-rewired)),
+you need to create `config-overrides.js`
+(will discuss the contents later):
 
 ```shell
 touch ./config-overrides.js
 ```
 
-And, of course, you need to modifiy your `package.json`:
+And, of course, you need to change your `package.json` accordingly:
 
 #### # `./package.json`
 
@@ -167,25 +168,30 @@ index c926937..b7a0de3 100644
    },
 ```
 
-While the next one is optionaly,
+While the next one is optional,
 but if you want to customize themes for
 [tailwindcss](https://tailwindcss.com/),
 you need `tailwind.config.js`.  
-However, make sure to place it within `src` directory
-for CRA does not prefer pre-bundled resources
-to be placed directly under the root:
+But, make sure to place it within `src` directory
+for CRA does not want any pre-bundled resources
+placed directly under the root:
 
 ```shell
 npx tailwind init ./src/tailwind.config.js
 ```
 
-That's it for the common setups.  
-Now,
-[tailwindcss](https://tailwindcss.com/)
-should work in your
+That's it for common setups.  
+Go on to choose either
+[2-2. Using PostCSS](#what-postcss)
+or
+[2-3. Using Babel macros](#what-macro),
+and
 [emotion](https://emotion.sh/docs/introduction)
-notations.
-For a demonstration purpose,
+and
+[tailwindcss](https://tailwindcss.com/)
+should work.
+
+Just for a demonstration purpose,
 I removed CSS files for `App.tsx`,
 and replaced them with embedded styles
 using
@@ -262,9 +268,8 @@ index 226ee63..a322dbd 100644
    );
 ```
 
-Also, make sure to initialize `tailwind` modules
-in your external CSS file
-so that other external CSS files can utilize `tailwind`:
+You also need to initialize `tailwind` modules in your external CSS file
+so that other external CSS files can utilize `tailwind` resources:
 
 #### # `./src/App.css`
 
@@ -274,18 +279,18 @@ so that other external CSS files can utilize `tailwind`:
 +@tailwind utilities;
 ```
 
-Here is a list of packages to install so far:
+A list of packages to install so far:
 
 ```shell
 yarn add --dev typescript @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-react customize-cra react-app-rewired emotion @emotion/core @emotion/styled @emotion/babel-preset-css-prop tailwindcss tailwind.macro@next
 ```
 
-**UP TO THIS POINT ARE THE COMMON SETUPS FOR BOTH APPROACHES.
+**UP TO THIS POINT ARE THE COMMON SETUPS FOR BOTH APPROACHES.  
 FROM NOW ON, I WILL EXPLAIN EACH APPROACH.**
 
 
 <a id="what-postcss"></a>
-### 2-2. Using `PostCSS`
+### 2-2. Using PostCSS
 
 One way to have
 [emotion](https://emotion.sh/docs/introduction)
@@ -294,14 +299,13 @@ and
 working, is to use `PostCSS plugin`.  
 **Although this is much easier,
 if you are planning to run Jest testings,
-it just does not work.**  
-For Jest to work, you need to go with
-another approach which is
-[2-3 Using 'babel-plugin-macros'](#what-macro).
+it just does not work...**  
+**For Jest to work, you need
+[2-3 Using 'babel-plugin-macros'](#what-macro).**
 
 Here's the first approach using PostCSS.  
 All you need is `config-overrides.js`
-to use *addPostcssPlugins*:
+to use "addPostcssPlugins":
 
 #### # `./config-overrides.js`
 
@@ -320,25 +324,26 @@ module.exports = override(
 )
 ```
 
-That's all.
+That's all!  
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
 should now work in your app!
 
-Now, like I told you,
-you need the next approach
-if you intend to run Jest testings.
+*Now, just like I told you,
+if you are planning to run tests,
+you need another approach.*
 
 
 
 <a id="what-macro"></a>
-### 2-3. Using `babel-plugin-macros`
+### 2-3. Using Babel Macros
 
 Another ways is to use
-[babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros).
+[babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros)
+and this is the only way for Jest (+ Enzyme) tests to work.
 
-First, you are installing the followings:
+First, you are installing:
 
 - babel-plugin-macros
 - tailwind.macro@next
@@ -347,12 +352,13 @@ First, you are installing the followings:
 yarn add --dev babel-plugin-macros tailwind.macro@next
 ```
 
-`tailwind.macro` is an alias of `babel-plugin-tailwind-components`.  
-Also, make sure to install `next`
-because you installed `tailwindcss@next` earlier,
-and it won't work otherwise.
+Where `tailwind.macro` is just an alias of `babel-plugin-tailwind-components`.
 
-First, you need `babel-plugin-macros.config.js` directly under the root:
+**Make sure to install `next`
+since you installed `tailwindcss@next` earlier
+otherwise it won't work.**
+
+Then, create `babel-plugin-macros.config.js`:
 
 #### # `./babel-plugin-macros.config.js`
 
@@ -374,7 +380,7 @@ Also, the way you use it differs for
 [styled-components](https://github.com/styled-components/styled-components),
 and it should be `Button = styled('button')` rather than `Button = styled.button`.
 
-Secondly, here's what you need for your `config-overrides.js`:
+Lastly, here's the contents for `config-overrides.js`:
 
 #### # `./config-overrides.js`
 
@@ -395,9 +401,9 @@ OK. That's all for
 [emotion](https://emotion.sh/docs/introduction)
 and
 [tailwindcss](https://tailwindcss.com/)
-to work!  
-However, if you are running Jest (with Enzyme),
-you need the followings:
+to work.  
+However, if you are running Jest (+ Enzyme) tests,
+a bit more work is required:
 
 - ts-jest
 - enzyme
@@ -418,10 +424,10 @@ in your `config-overrides.js`,
 but it could easily become messy,
 so I am using `jest.config.js`.
 
-**Notice, however, this only works
-when you are using Enzyme's `shallow` for the test.
-If you are testing with the actual React component,
-you need to override the configurations
+**Notice `jest.config.js` only works
+if you are testing with Enzyme's `shallow`.
+If you want to test with actual React components,
+then you need to override the configurations
 in your `config-overrides.js`.**
 
 #### # `./jest.config.js`
@@ -444,12 +450,11 @@ module.exports = {
 }
 ```
 
-You also need `src/setupTests.ts`.  
-Your app is made with CRA,
-and it will automatically lookup the file.  
+You also need `src/setupTests.ts`.
+For CRA, it will automatically lookup the file.  
 If your app is non-CRA,
 then for the above configurations,
-add `"setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"]`.
+you need to add `"setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"]`.
 
 
 #### # `./src/setupTests.js`
