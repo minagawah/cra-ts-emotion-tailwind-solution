@@ -339,9 +339,9 @@ you need another approach.*
 <a id="what-macro"></a>
 ### 2-3. Using Babel Macros
 
-Another ways is to use
+Another way is to use
 [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros)
-and this is the only way for Jest (+ Enzyme) tests to work.
+and this is the only way for Jest + Enzyme tests to work.
 
 First, you are installing:
 
