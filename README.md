@@ -19,9 +19,9 @@ for
 and
 [tailwindcss](https://tailwindcss.com/)
 to work on my CRA app with TypeScript support,
-and I do not want others to suffer as I did...
-This is a sample app to illustrate
-some of my solutions.
+and I do not want others to suffer as I did....
+This is a sample app to illustrate my solutions.
+Also, I finally figure out the workaround for Jest + Enzyme
 
 
 <a id="what"></a>
@@ -36,9 +36,9 @@ to work:
 1. Using PostCSS plugin
 2. Using Babel Macros
 
-Both work fine,
+**Both work fine,
 except if you are running Jest (+ Enzyme) tests,
-then you need the latter.
+then you need the latter.**
 
 I am assuming the readers have a CRA app,
 and not wanting your app to eject the configurations,
@@ -117,10 +117,10 @@ Install the followings:
 - @emotion/babel-preset-css-prop
 - tailwindcss@next
 
-*(In case you're wondering
+(In case you're wondering
 why not installing `autoprefixer`, nor `normalized.css`,
 [the former is included in CRA](https://create-react-app.dev/docs/post-processing-css),
-and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app))*
+and [the latter in tailwind](https://tailwindcss.com/docs/preflight/#app))
 
 Now, TypeScript does not know what `tailwind.macro` means,
 so you need to define it:
@@ -181,10 +181,10 @@ npx tailwind init ./src/tailwind.config.js
 ```
 
 That's it for common setups.  
-Go on to choose either
-[2-2. Using PostCSS](#what-postcss)
+Go on choosing either
+["2-2. Using PostCSS"](#what-postcss)
 or
-[2-3. Using Babel macros](#what-macro),
+["2-3. Using Babel Macros"](#what-macro),
 and
 [emotion](https://emotion.sh/docs/introduction)
 and
@@ -301,7 +301,7 @@ working, is to use `PostCSS plugin`.
 if you are planning to run Jest testings,
 it just does not work...**  
 **For Jest to work, you need
-[2-3 Using 'babel-plugin-macros'](#what-macro).**
+["2-3 Using Babel macros"](#what-macro).**
 
 Here's the first approach using PostCSS.  
 All you need is `config-overrides.js`
