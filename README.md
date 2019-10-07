@@ -26,7 +26,7 @@ Also, I finally figure out the workaround
 for CRA with TypeScript to run Jest + Enzyme tests (using `ts-jest`).  
 Or, if you are NOT using TypeScript
 and having the similar issue using `babel-jest` for testing,
-then look at [another project](https://github.com/minagawah/food)
+then looking at [another project](https://github.com/minagawah/food)
 of mine may help you.
 
 
