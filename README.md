@@ -22,10 +22,12 @@ to work on my CRA app with TypeScript support,
 and I do not want others to suffer as I did....
 This is a sample app to illustrate my solutions.
 
-Also, I finally figure out the workaround
-for CRA with TypeScript to run Jest + Enzyme tests (using `ts-jest`).  
-Or, if you are NOT using TypeScript
-and having the similar issue using `babel-jest` for testing,
+Also, I finally figure out
+how to test with Jest + Enzyme
+in CRA TypeScript app (using `ts-jest`).
+Hope it helps.
+Or, if you are NOT using TypeScript,
+and struggling with `babel-jest`,
 then looking at
 [another project of mine](https://github.com/minagawah/food)
 may help.
