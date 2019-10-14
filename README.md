@@ -29,10 +29,10 @@ Hope it helps.
 Or, if you are NOT using TypeScript,
 and struggling with `babel-jest`,
 one of my project
-["food"](https://github.com/minagawah/food)
+**[food](https://github.com/minagawah/food)**
 may help.  
 Or, if you are NOT EVEN using CRA, see if
-["mini-react-201910"](https://github.com/minagawah/mini-react-201910)
+**[mini-react-201910](https://github.com/minagawah/mini-react-201910)**
 helps.
 
 
