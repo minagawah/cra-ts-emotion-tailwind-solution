@@ -490,9 +490,7 @@ yarn test
 ```
 
 
-
-
-<a href="license"></a>
+<a id="license"></a>
 ## 3. License
 
 Provided under [WTFPL](./LICENSE).  
