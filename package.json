@@ -33,7 +33,7 @@
     "emotion",
     "tailwindcss"
   ],
-  "author": "minagawah <minagawa@tokyo800.jp>",
+  "author": "mina <mina@tokyo800.jp>",
   "license": "WTFPL",
   "dependencies": {
     "@types/jest": "^24.0.18",
