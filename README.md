@@ -2,6 +2,13 @@
 
 Solutions for React + TypeScript + emotion + tailwindcss.
 
+**(2020.8.29)  
+This is old. If you are intending to implement *Emotion* + *TailwindCSS* in your React app,
+consider using `twin.macro` which is way easier
+than instructions illustrated in this repository.
+Refer to *[another repository of mine](https://github.com/minagawah/map-supercluster-example)*
+which contains detailed instructions.**
+
 [1. About](#about)  
 [2. What I Did](#what)  
 &nbsp; [2-1. Common Setups](#what-common)  
