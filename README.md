@@ -29,19 +29,6 @@ to work on my CRA app with TypeScript support,
 and I do not want others to suffer as I did....
 This is a sample app to illustrate my solutions.
 
-Also, I finally figure out
-how to test with Jest + Enzyme
-in CRA TypeScript app (using `ts-jest`).
-Hope it helps.  
-Or, if you are NOT using TypeScript,
-and struggling with `babel-jest`,
-one of my project
-**[food](https://github.com/minagawah/food)**
-may help.  
-Or, if you are NOT EVEN using CRA, see if
-**[mini-react-201910](https://github.com/minagawah/mini-react-201910)**
-helps.
-
 
 <a id="what"></a>
 ## 2. What I Did
