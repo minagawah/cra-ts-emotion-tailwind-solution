@@ -33,7 +33,7 @@
     "emotion",
     "tailwindcss"
   ],
-  "author": "Hiroki Minagawa <minagawa@tokyo800.jp>",
+  "author": "minagawah <minag@tokyo800.jp>",
   "license": "WTFPL",
   "dependencies": {
     "@types/jest": "^24.0.18",
